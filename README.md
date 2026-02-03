@@ -1,2 +1,2 @@
 # SheCodes-Project
-member & = samar
+member 1 = samar
