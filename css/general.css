@@ -9,10 +9,15 @@
 
 body,
 html {
-    height: 100dvh;
-    max-width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
 }
 
-header{
-    height: 100px;
+body {
+  font-family: var(--font-main);
+  background: linear-gradient(180deg, var(--light), var(--secondary));
+}
+
+header {
+  height: 100px;
 }
