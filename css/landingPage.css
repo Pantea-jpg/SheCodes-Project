@@ -3,3 +3,24 @@ body{
     flex-direction: column;
 }
 
+main{
+    height: 83%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+.project-containers{
+    width: 70%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.projects{
+    height: 60%;
+    width: ;
+}
