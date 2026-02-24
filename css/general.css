@@ -7,27 +7,57 @@
   --main-font: Arial, sans-serif;
 }
 
-body,
-html {
-  height: 100dvh;
-  max-width: 100dvw;
+html,
+body {
+  height: 100vh;
 }
 
 body {
-  font-family: var(--font-main);
+  width: 100%;
+  font-family: var(--main-font);
   background: linear-gradient(180deg, var(--light), var(--secondary));
 }
-
+h1{
+    font-size: 1.7rem;
+    font-weight: bold;
+}
 .header {
-  height: 130px;
   background-color: var(--text);
+  height: 130px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 20px 50px;
 }
 
-.logo{
-    height: 100%;
-    width: 50%;
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav a {
+  min-width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+#login {
+  background-color: var(--bg);
+}
+
+#learn-more {
+  background-color: var(--light);
+  color: white;
+}
+
+nav a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
