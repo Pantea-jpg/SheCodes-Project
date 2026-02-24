@@ -1,24 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/general.css">
-    <link rel="stylesheet" href="./css/search.css">
-    <link rel="stylesheet" href="./css/reset.css">
-    
-    <title>searchPage</title>
-</head>
-<body>
-    <main>
-    <header>
-        <img src="./assets/logo.png" alt="logo">
-    </header>
-    <div id="search">
-<h1>search</h1>
-    </div>
-    <div id="result">result</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/general.css" />
+    <link rel="stylesheet" href="./css/search.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
 
-</main>
-</body>
+    <title>searchPage</title>
+  </head>
+  <body>
+    <main>
+        <header class="header">
+        <div class="logo">
+          <img class="logo" src="./assets/logo.png" alt="Music Match Logo" />
+        </div>
+      <nav>
+        <a class="loginButton" href="#">Login</a>
+        <a class="learnButton" href="#">Learn more</a>
+      </nav>
+    </header>
+      
+      <div class="search-container">
+        <form>
+          <input
+            type="search"
+            id="mySearch"
+            name="q"
+            placeholder="Search for artists or tracks..."
+            size="30"
+          />
+          <button>Search</button>
+        </form>
+      </div>
+      <div id="result">result</div>
+    </main>
+  </body>
 </html>

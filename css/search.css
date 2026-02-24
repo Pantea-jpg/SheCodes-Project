@@ -6,19 +6,50 @@
   --light: #2845d6;
   --main-font: Arial, sans-serif;
 }
- main{
-    display: grid;
- }
-header{
-    background-color: #fff7cd;
-    border-radius: 10px;
+main {
+  display: grid;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff7cd;
 }
 
-#search{
-    background-color: #2845d6;
+.loginButton {
+  background-color: #4360f0;
+  border-radius: 10px;
+  padding: 8px;
+  
+  cursor: pointer;
+}
+.learnButton {
+  background-color: #f68048;
+  border-radius: 10px;
+  padding: 8px;
+  margin-right: 10px ;
+  cursor: pointer;
+}
+.learnButton:hover {
+  background-color: #7a8be2;
+  transform: translateY(-2px);
+}
+.loginButton:hover{
+background-color: #7a8be2;
+  transform: translateY(-2px);
 }
 
-#result{
-    background-color: #1a2ca3;
+.logo {
+}
+form {
+  border-color: #f68048;
+}
+.search-container {
+  background-color: #2845d6;
+  height: 200px;
 }
 
+#result {
+  background-color: #1a2ca3;
+  height: 100vh;
+}
