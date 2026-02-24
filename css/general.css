@@ -18,6 +18,16 @@ body {
   background: linear-gradient(180deg, var(--light), var(--secondary));
 }
 
-header {
-  height: 100px;
+.header {
+  height: 130px;
+  background-color: var(--text);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+    height: 100%;
+    width: 50%;
 }
