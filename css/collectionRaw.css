@@ -1,0 +1,91 @@
+
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+button {
+  background-color: #1e2a52;
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2c3a6d;
+}
+
+/* --- Suchleiste & Dropdown --- */
+header form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header input[type="search"] {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+}
+
+header select {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+  background-color: #1e2a52;
+  color: #ffffff;
+}
+
+/* --- Hauptbereich --- */
+main {
+  padding: 20px 40px;
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+/* --- Karten / Artikel --- */
+article {
+  background-color: #1e2a52;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+figure {
+  margin: 0;
+  width: 100%;
+  height: 140px;
+  background-color: #2c3a6d; /* Platzhalter für Albumcover */
+  border-radius: 12px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Herz-Buttons */
+article button {
+  align-self: flex-end;
+  font-size: 20px;
+  background: none;
+  padding: 0;
+}
+
+article button:hover {
+  transform: scale(1.1);
+}
