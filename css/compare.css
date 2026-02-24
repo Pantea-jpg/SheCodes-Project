@@ -1,3 +1,31 @@
+
+header {
+    background-color: var(--bg);
+    height: 80px;
+}
+
+body{
+    background-color: var(--secondary);
+    font-family: var(--main-font);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 3rem;
+    color: white;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* eerste bereik van de twee songs*/
+
 .comparison {
   display: flex;
   justify-content: center;
@@ -6,18 +34,79 @@
   gap: 60px;
 }
 
+.song h2 {
+  position: relative;
+  padding-top: 140px; 
+  color: white;
+}
+
+.song p {
+    color: white;
+}
+
+ .songPicture  {
+    margin-top: 10px;
+  width: 120px;
+  height: 160px;
+  /*background-image: ;*/
+  background-color: aliceblue;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px solid;
+}
+
+.song{
+    border: 2px solid var(--bg);
+    background-color: var(--light);
+    border-radius: 5%;
+    width: 200px;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .vs-circle {
+    font-size: 2.5rem;
   width: 80px;
   height: 80px;
-  border: 3px solid white;
+  border: 1px solid black;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--text);
+  color: var(--bg);
   font-weight: bold;
 }
 
-.stats {
-  width: 60%;
-  margin: 0 0;
+
+/* tweede deel met de informaties over de twee songs */
+.InfoRow {
+background-color: var(--primary);
+color: white;
+font-weight: bold;
+padding: 3px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.comparisonInfo {
+border-radius: 1px solid black;
+border-radius: 5%;
+}
+.InfoRow:nth-of-type(1){
+border-bottom: 1px solid white;
+border-radius: 5% 5% 0% 0%;
+}
+.InfoRow:nth-of-type(2){
+border-bottom: 1px solid white;
+}
+
+.InfoRow:nth-of-type(3){
+border-bottom: 1px solid white;
+}
+.InfoRow:nth-of-type(4){
+border-radius: 0% 0% 5% 5%;
 }
