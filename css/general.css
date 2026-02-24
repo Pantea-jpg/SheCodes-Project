@@ -6,3 +6,13 @@
   --light: #2845d6;
   --main-font: Arial, sans-serif;
 }
+
+body,
+html {
+    height: 100dvh;
+    max-width: 100dvw;
+}
+
+header{
+    height: 100px;
+}
