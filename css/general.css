@@ -7,13 +7,9 @@
   --main-font: Arial, sans-serif;
 }
 
-body,
-html {
-  height: 100dvh;
-  max-width: 100dvw;
-}
-
 body {
+  height: 100%;
+  width: 100%;
   font-family: var(--font-main);
   background: linear-gradient(180deg, var(--light), var(--secondary));
 }
@@ -25,9 +21,31 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 20px 50px;
 }
 
-.logo{
-    height: 100%;
-    width: 50%;
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 20%;
+  height: 90%;
+  padding: 20px;
+  a {
+    min-width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #login {
+    background-color: var(--bg);
+  }
+  #learn-more {
+    background-color: var(--light);
+    color: white;
+  }
 }
