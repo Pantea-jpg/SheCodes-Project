@@ -17,9 +17,9 @@ body {
   font-family: var(--main-font);
   background: linear-gradient(180deg, var(--light), var(--secondary));
 }
-h1{
-    font-size: 1.7rem;
-    font-weight: bold;
+h1 {
+  font-size: 1.7rem;
+  font-weight: bold;
 }
 .header {
   background-color: var(--text);
@@ -29,7 +29,12 @@ h1{
   align-items: center;
   padding: 20px 50px;
 }
-
+.logo {
+  img {
+    width: 300px;
+    height: 130px;
+  }
+}
 nav {
   display: flex;
   align-items: center;
