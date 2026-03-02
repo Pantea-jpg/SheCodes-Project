@@ -13,6 +13,7 @@ body {
 }
 
 body {
+
   width: 100%;
   font-family: var(--main-font);
   background: linear-gradient(180deg, var(--light), var(--secondary));

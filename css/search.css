@@ -1,14 +1,14 @@
-:root {
-  --primary: #1a2ca3;
-  --secondary: #0d1a63;
-  --head: #fff7cd;
-  --bg: #f68048;
-  --light: #2845d6;
-  --main-font: Arial, sans-serif;
-}
-main {
+
+body {
+  
   display: grid;
-  margin: 10px;
+  
+}
+#result{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items: center;
 }
 header {
   display: flex;
@@ -50,7 +50,7 @@ form{
 }
 .searchButton{
     background-color:rgb(91, 143, 246) ;
-    padding: 12PX 30PX;
+    padding: 12px 30px;
     color: white;
     border-radius: 10px;
     font-size: 18PX;
@@ -65,10 +65,7 @@ input::placeholder{
     color: #767474;
     opacity: 1;
 }
-#result {
-  background-color: #1a2ca3;
-  height: 100vh;
-}
+
 
 .result-container{
     display: flex;
@@ -78,27 +75,71 @@ input::placeholder{
 }
 .result-item{
   display: flex;
-  justify-content:space-around
- 
+  justify-content:space-around;
+  gap: 15px;
+ border-bottom:1px solid white;
 }
 .result-info{
     display: flex;
-    gap: 5px;
+    gap: 10px;
     
 }
 .result-img{
-    height: 150px;
-    width: 200px;
+    height: 50px;
+    width: 100px;
     border-radius: 10px;
+    margin-bottom: 5px;
 }
 .detail-btn{
     background-color: rgb(205, 196, 165);
     width: 70px;
-    height: 50px;
-    border-radius: 10px;
+    height: 20px;
+    border-radius: 5px;
     color: black;
-    padding: 15px 10px;
-    margin-top: 30px;
+    margin-left: 30px;
+    padding-left: 10px;
+    
+    font-size: 15px;
     
     
 }
+.detail-btn:hover{
+    cursor: pointer;
+    transform: translateY(2px);
+}
+.ad{
+  background-color: bisque;
+  width: 250px;
+  height: 300px;
+  border-radius: 10px;
+  
+}
+#filter-container{
+  display: flex;
+  margin: 30px ;
+  border-bottom: 1px solid black;
+
+
+}
+
+.tracksbutton,.artistsbutton{
+background-color: rgb(165, 195, 238);
+border: 1px solid black;
+padding: 8px 25px;
+font-weight: bold;
+cursor: pointer;
+
+}
+.tracksbutton{
+  border-radius: 15px 0 0 ;
+}
+.artistsbutton{
+  border-radius: 0 15px 0 0;
+  
+}
+.active{
+  background-color: white;
+  box-shadow: 0 3px 6px;
+}
+
+

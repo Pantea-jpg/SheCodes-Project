@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset.css" />
+
     <link rel="stylesheet" href="./css/general.css" />
     <link rel="stylesheet" href="./css/search.css" />
-    <link rel="stylesheet" href="./css/reset.css" />
 
     <title>searchPage</title>
   </head>
   <body>
-    <main>
     <header class="header">
       <div class="logo">
         <img class="logo" src="./assets/logo.png" alt="Music Match Logo" />
@@ -20,7 +20,7 @@
         <a class="learnButton" href="#">Learn more</a>
       </nav>
     </header>
-    
+    <main>
       <div class="search-container">
         <form>
           <input
@@ -34,11 +34,12 @@
         </form>
       </div>
       <div id="filter-container">
-        <button class="tracksbutton">Tracks</button>
+        <button class="tracksbutton active">Tracks</button>
         <button class="artistsbutton">Artists</button><b></b>
       </div>
+      <section id="result">
       <div class="result-container">
-        <h1>Search result</h1>
+        <h2>Search result</h2>
         <div class="result-item">
           <img
             src="./assets/otherProjects.png"
@@ -104,9 +105,8 @@
           <a href="./detailPage.html" class="detail-btn">Details</a>
         </div>
       </div>
-      <div class="Ad">
-        <p>Ad</p>
-      </div>
+      <div class="ad"><p>ad</p></div>
+      </section>
     </main>
   </body>
 </html>
