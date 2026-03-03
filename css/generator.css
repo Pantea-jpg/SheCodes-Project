@@ -1,0 +1,145 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff7cd;
+}
+
+main {
+  display: grid;
+  color: white;
+  font-size: 10px;
+  justify-content: center;
+  gap: 30px;
+}
+.mood-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+.genre-section {
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+}
+h1 {
+  font-size: 10px;
+  text-align: center;
+  margin-top: 15px;
+}
+h2 {
+  font-size: large;
+}
+
+button {
+  font-size: 7px;
+  background-color: rgb(71, 68, 230);
+  padding: 10px 10px 10px 5px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  border: 2px solid rgb(70, 70, 156);
+  width: 150px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(37, 36, 100);
+}
+.setting-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  gap: 200px;
+}
+
+.setting{
+    display: grid;
+    gap: 10px;
+    font-size: 15px;
+
+}
+
+select, input{
+     background-color: rgb(71, 68, 230);
+  padding: 10px 10px 10px 5px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  border: 2px solid rgb(70, 70, 156);
+  width: 150px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: white;
+  height: 6px;
+  border-radius: 3px;
+}
+.playList-generate{
+    width: 250px;
+margin: 0 auto;
+    
+}
+.card{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    background-color: rgb(87, 86, 184);
+    width: 150px;
+    height: 200px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+
+}
+.img{
+    background-color: #fff7cd;
+    width: 130px;
+    height: 100px;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+ button.play-preview{
+    width: 140px;
+    height: 30px;
+ }
+ .card h2{
+    font-size: 15px;
+    text-align: center;
+ }
+ .card p{
+    font-size:13px ;
+ }
+ span{
+  background-color: red;
+ }
+ #playlist{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  
+ }
+ .card button{
+
+font-size: 10px;
+
+ }
+ .liked{
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+
+ }
+ 
+ 

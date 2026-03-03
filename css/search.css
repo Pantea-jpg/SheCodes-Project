@@ -10,27 +10,8 @@ body {
   justify-content:space-around;
   align-items: center;
 }
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fff7cd;
-}
 
-.loginButton {
-  background-color: #4360f0;
-  border-radius: 10px;
-  padding: 8px;
 
-  cursor: pointer;
-}
-.learnButton {
-  background-color: #f68048;
-  border-radius: 10px;
-  padding: 8px;
-  margin-right: 10px;
-  cursor: pointer;
-}
 
 .search-container {
   background-color: rgb(174, 206, 250);
@@ -112,8 +93,12 @@ input::placeholder{
   width: 250px;
   height: 300px;
   border-radius: 10px;
+justify-items: center;
+
   
 }
+
+
 #filter-container{
   display: flex;
   margin: 30px ;
