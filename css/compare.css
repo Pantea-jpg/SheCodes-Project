@@ -1,19 +1,5 @@
 
-header {
-    background-color: var(--bg);
-    height: 80px;
-}
 
-body{
-    background-color: var(--secondary);
-    font-family: var(--main-font);
-    color: white;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
 h1 {
     font-size: 3rem;
@@ -44,10 +30,10 @@ h1 {
 
 
  .songPicture  {
-    margin-top: 10px;
+  margin-top: 10px;
   width: 120px;
   height: 160px;
-  /*background-image: ;*/
+  background-image: url(../assets/739-100x80.jpg);
   background-color: aliceblue;
   background-size: cover;
   background-position: center;
