@@ -76,3 +76,15 @@ main {
 .message {
   color: white;
 }
+
+@media (max-width: 600px) {
+  main {
+    padding: 1rem;
+  }
+  .projects-containers {
+    flex-direction: column;
+  }
+  .projects {
+    gap: 1rem;
+  }
+}
