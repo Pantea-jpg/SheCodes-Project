@@ -1,24 +1,4 @@
-/* --- Grundlayout --- */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #0d1b3d; /* dunkles Blau wie im Bild */
-  color: #ffffff;
-}
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-}
-
-header > div:first-child {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
 
 h1 {
   margin: 0;

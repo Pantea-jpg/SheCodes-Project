@@ -1,0 +1,23 @@
+header {
+    background-color: var(--bg);
+    height: 80px;
+}
+
+body{
+    background-color: var(--secondary);
+    font-family: var(--main-font);
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
