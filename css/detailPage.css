@@ -22,13 +22,14 @@ body {
   flex-direction: row;
   justify-content: center;
   gap: 3rem;
-  align-items: center;
 }
 .artist-image {
   flex: 1;
-  background-color: azure;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  background-color: beige;
+  border-radius: 10px;
+}
+.artist-image img {
   border-radius: 10px;
 }
 .artist-details {
@@ -57,8 +58,6 @@ body {
   border-radius: 8px;
   font-size: 0.9rem;
 }
-
-
 
 .top-songs-h2 {
   font-size: 2rem;
