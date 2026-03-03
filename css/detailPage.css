@@ -117,7 +117,14 @@ body {
   border-bottom: none;
 }
 
-
 @media (max-width: 600px) {
-    
+  .artist-info {
+    flex-direction: column;
+  }
+  .album {
+    display: none;
+  }
+  .genre {
+    display: none;
+  }
 }
