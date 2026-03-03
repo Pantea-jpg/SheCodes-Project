@@ -116,3 +116,8 @@ body {
 .song-item:last-child {
   border-bottom: none;
 }
+
+
+@media (max-width: 600px) {
+    
+}

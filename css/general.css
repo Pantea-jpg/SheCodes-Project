@@ -13,7 +13,6 @@ body {
 }
 
 body {
-
   width: 100%;
   font-family: var(--main-font);
   background: linear-gradient(180deg, var(--light), var(--secondary));
@@ -67,3 +66,31 @@ nav a:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+/* mobile phone */
+@media (max-width: 600px) {
+  body{
+    width: 100%;
+    margin: 0;
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+
+  .logo img {
+    width: 200px;
+  }
+  nav {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  nav a {
+    align-self: flex-end;
+    min-width: 80px;
+    height: 35px;
+    font-size: 0.7rem;
+  }}
