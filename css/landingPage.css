@@ -70,7 +70,7 @@ main {
 }
 .images {
   width: 300px;
-  height: 230px;
+  height: auto;
   border-radius: 10px;
 }
 .message {
@@ -91,7 +91,7 @@ main {
 
 /* tablet */
 @media (min-width: 601px) and (max-width: 1024px) {
-  main{
+  main {
     margin: 1rem;
   }
   .projects-containers {
