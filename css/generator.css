@@ -33,7 +33,7 @@ h2 {
 
 button {
   font-size: 7px;
-  background-color: rgb(71, 68, 230);
+  background-color: rgb(24, 28, 109);
   padding: 10px 10px 10px 5px;
   border-radius: 8px;
   font-weight: bold;
@@ -48,7 +48,8 @@ button {
 
 button:hover {
   cursor: pointer;
-  background-color: rgb(37, 36, 100);
+  background-color: rgb(44, 43, 124);
+  transform: translateY(2px);
 }
 .setting-section {
   display: flex;
@@ -66,7 +67,7 @@ button:hover {
 }
 
 select, input{
-     background-color: rgb(71, 68, 230);
+     background-color: rgb(24, 28, 109);
   padding: 10px 10px 10px 5px;
   border-radius: 8px;
   font-weight: bold;
