@@ -1,9 +1,4 @@
-/* header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fff7cd;
-} */
+
 
 main {
   display: grid;
@@ -63,6 +58,22 @@ button:hover {
   display: grid;
   gap: 10px;
   font-size: 15px;
+}
+.select{
+  position: relative;
+  width: 150px;
+}
+.select::after{
+  content: "⏷";
+  font-size: 18px;
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 65%;
+  transform: translateY(-50%);
+
+  pointer-events: none;
+
 }
 
 select,
@@ -136,6 +147,7 @@ span {
   cursor: pointer;
   color: #000;
 }
+
 
 @media (min-width: 601px) and (max-width: 1024px) {
   main {
