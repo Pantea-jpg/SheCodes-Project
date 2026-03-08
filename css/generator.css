@@ -1,9 +1,9 @@
-header {
+/* header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #fff7cd;
-}
+} */
 
 main {
   display: grid;
@@ -59,15 +59,15 @@ button:hover {
   gap: 200px;
 }
 
-.setting{
-    display: grid;
-    gap: 10px;
-    font-size: 15px;
-
+.setting {
+  display: grid;
+  gap: 10px;
+  font-size: 15px;
 }
 
-select, input{
-     background-color: rgb(24, 28, 109);
+select,
+input {
+  background-color: rgb(24, 28, 109);
   padding: 10px 10px 10px 5px;
   border-radius: 8px;
   font-weight: bold;
@@ -84,63 +84,139 @@ input[type="range"]::-webkit-slider-runnable-track {
   height: 6px;
   border-radius: 3px;
 }
-.playList-generate{
-    width: 250px;
-margin: 0 auto;
-    
+.playList-generate {
+  width: 250px;
+  margin: 0 auto;
 }
-.card{
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    justify-content: center;
-    background-color: rgb(87, 86, 184);
-    width: 150px;
-    height: 200px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-
+.card {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  background-color: rgb(87, 86, 184);
+  width: 150px;
+  height: 200px;
+  margin-bottom: 20px;
+  border-radius: 10px;
 }
-.img{
-    background-color: #fff7cd;
-    width: 130px;
-    height: 100px;
-    margin-top: 5px;
-    border-radius: 10px;
+.img {
+  background-color: #fff7cd;
+  width: 130px;
+  height: 100px;
+  margin-top: 5px;
+  border-radius: 10px;
 }
- button.play-preview{
-    width: 140px;
-    height: 30px;
- }
- .card h2{
-    font-size: 15px;
-    text-align: center;
- }
- .card p{
-    font-size:13px ;
- }
- span{
+button.play-preview {
+  width: 140px;
+  height: 30px;
+}
+.card h2 {
+  font-size: 15px;
+  text-align: center;
+}
+.card p {
+  font-size: 13px;
+}
+span {
   background-color: red;
- }
- #playlist{
+}
+#playlist {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 30px;
-  
- }
- .card button{
-
-font-size: 10px;
-
- }
- .liked{
+}
+.card button {
+  font-size: 10px;
+}
+.liked {
   font-size: 30px;
   background: none;
   border: none;
   cursor: pointer;
   color: #000;
+}
 
- }
- 
- 
+@media (min-width: 601px) and (max-width: 1024px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+  }
+  .mood-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .genre-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .setting-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  #playlist{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  
+    
+
+}
+.button-title{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+}
+
+/* mobile phone */
+@media (max-width: 600px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .mood-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .genre-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .setting-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  #playlist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+  .button-title{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+}
