@@ -32,6 +32,10 @@ form {
   align-items: center;
   gap: 150px;
 }
+input{
+  width: 200px;
+  font-size: 14px;
+}
 .searchButton {
   background-color: rgb(91, 143, 246);
   padding: 12px 30px;
