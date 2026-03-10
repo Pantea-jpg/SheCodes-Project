@@ -1,31 +1,41 @@
 body {
   display: grid;
 }
+main {
+  display: grid;
+  justify-content: center;
+}
 #result {
   display: flex;
   flex-direction: row;
+  gap: 100px;
   justify-content: space-around;
   align-items: center;
 }
 
 .search-container {
   background-color: rgb(174, 206, 250);
+  max-width: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
+
   margin-top: 40px;
-  margin-left: 40px;
+  margin-left: 100px;
   margin-right: 40px;
   height: 80px;
   border-radius: 10px;
 }
 form {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 150px;
 }
 .searchButton {
   background-color: rgb(91, 143, 246);
   padding: 12px 30px;
+  margin-right: 10px;
   color: white;
   border-radius: 10px;
   font-size: 18px;
@@ -35,21 +45,17 @@ form {
   cursor: pointer;
   transform: translateY(2px);
 }
-input::placeholder {
-  color: #767474;
-  opacity: 1;
-}
 
 .result-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  color: white;
+  color: rgb(234, 228, 228);
 }
 .result-item {
   display: flex;
   justify-content: space-around;
-  gap: 15px;
+  gap: 150px;
   border-bottom: 1px solid white;
 }
 .result-info {
@@ -110,7 +116,13 @@ input::placeholder {
   box-shadow: 0 3px 6px;
 }
 
-@media (min-width: 601px) and(max-width:1024px) {
+@media (min-width: 601px) and (max-width: 1024px) {
+  .result-item {
+    gap: 15px;
+  }
+  #result {
+    gap: 1px;
+  }
 }
 @media (max-width: 600px) {
   body {
@@ -121,6 +133,8 @@ input::placeholder {
   main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   #result {
     display: flex;
@@ -130,6 +144,8 @@ input::placeholder {
   .search-container {
     display: flex;
     justify-content: center;
+    margin-right: 100px;
+    min-width: 250px;
   }
   form {
     display: flex;
