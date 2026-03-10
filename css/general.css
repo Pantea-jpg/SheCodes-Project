@@ -228,3 +228,17 @@ input::placeholder {
   display: flex;
   flex-direction: column;
 }
+
+.green , .red {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.green{
+  background-color: rgba(172, 255, 47, 0.325);
+}
+.red{
+  background-color: rgba(221, 66, 66, 0.441);
+}
