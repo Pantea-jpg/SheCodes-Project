@@ -124,6 +124,7 @@ body {
     flex-direction: column;
   }
 }
+/* mobile  */
 @media (max-width: 600px) {
   .artist-info {
     flex-direction: column;
