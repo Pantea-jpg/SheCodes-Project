@@ -46,7 +46,6 @@ form {
   transform: translateY(2px);
 }
 
-
 .result-container {
   display: flex;
   flex-direction: column;
@@ -117,7 +116,13 @@ form {
   box-shadow: 0 3px 6px;
 }
 
-@media (min-width: 601px) and(max-width:1024px) {
+@media (min-width: 601px) and (max-width: 1024px) {
+  .result-item {
+    gap: 15px;
+  }
+  #result {
+    gap: 1px;
+  }
 }
 @media (max-width: 600px) {
   body {
@@ -128,6 +133,8 @@ form {
   main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   #result {
     display: flex;
@@ -137,6 +144,8 @@ form {
   .search-container {
     display: flex;
     justify-content: center;
+    margin-right: 100px;
+    min-width: 250px;
   }
   form {
     display: flex;
