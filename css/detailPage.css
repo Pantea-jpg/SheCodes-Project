@@ -118,6 +118,11 @@ body {
   border-bottom: none;
 }
 
+#back-button{
+  width: 45px;
+  border-bottom: 2px solid white;
+}
+
 /* tablet */
 @media (min-width: 601px) and (max-width: 1024px) {
   .artist-info {
