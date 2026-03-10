@@ -72,7 +72,7 @@ input{
   border-radius: 10px;
   margin-bottom: 5px;
 }
-.detail-btn {
+/* .detail-btn {
   background-color: rgb(205, 196, 165);
   width: 70px;
   height: 20px;
@@ -82,18 +82,18 @@ input{
   padding-left: 10px;
 
   font-size: 15px;
-}
-.detail-btn:hover {
+} */
+/* .detail-btn:hover {
   cursor: pointer;
   transform: translateY(2px);
-}
-.ad {
+} */
+/* .ad {
   background-color: bisque;
   width: 250px;
   height: 300px;
   border-radius: 10px;
   justify-items: center;
-}
+} */
 
 #filter-container {
   display: flex;
@@ -118,6 +118,30 @@ input{
 .active {
   background-color: white;
   box-shadow: 0 3px 6px;
+}
+.result-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.image {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.details-btn {
+  margin-left: auto;
+  background: #d36f27;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 @media (min-width: 601px) and (max-width: 1024px) {
