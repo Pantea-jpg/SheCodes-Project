@@ -1,31 +1,41 @@
 body {
   display: grid;
 }
+main {
+  display: grid;
+  justify-content: center;
+}
 #result {
   display: flex;
   flex-direction: row;
+  gap: 100px;
   justify-content: space-around;
   align-items: center;
 }
 
 .search-container {
   background-color: rgb(174, 206, 250);
+  max-width: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
+
   margin-top: 40px;
-  margin-left: 40px;
+  margin-left: 100px;
   margin-right: 40px;
   height: 80px;
   border-radius: 10px;
 }
 form {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 150px;
 }
 .searchButton {
   background-color: rgb(91, 143, 246);
   padding: 12px 30px;
+  margin-right: 10px;
   color: white;
   border-radius: 10px;
   font-size: 18px;
@@ -35,21 +45,18 @@ form {
   cursor: pointer;
   transform: translateY(2px);
 }
-input::placeholder {
-  color: #767474;
-  opacity: 1;
-}
+
 
 .result-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  color: white;
+  color: rgb(234, 228, 228);
 }
 .result-item {
   display: flex;
   justify-content: space-around;
-  gap: 15px;
+  gap: 150px;
   border-bottom: 1px solid white;
 }
 .result-info {
