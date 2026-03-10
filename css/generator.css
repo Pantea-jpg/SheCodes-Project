@@ -141,11 +141,14 @@ span {
   font-size: 10px;
 }
 .liked {
-  font-size: 30px;
+  font-size: 18px;
   background: none;
   border: none;
   cursor: pointer;
-  color: #000;
+  color: #1b1919;
+}
+.liked:hover{
+  
 }
 
 
