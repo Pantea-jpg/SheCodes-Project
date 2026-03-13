@@ -1,11 +1,11 @@
 body {
   display: grid;
 }
-main {
+
+.filter-search{
   display: grid;
   justify-content: center;
 }
-
 #results{
   display: flex;
   flex-direction: column;
@@ -159,7 +159,7 @@ input{
   margin:20px 20px;
   width: 700px;
 }
-.topSide{
+main{
   
   position: sticky;
   top: 0;
