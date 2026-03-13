@@ -5,14 +5,14 @@ main {
   display: grid;
   justify-content: center;
 }
-#result {
-  display: flex;
-  flex-direction: row;
-  gap: 100px;
-  justify-content: space-around;
-  align-items: center;
-}
 
+#results{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  
+}
 .search-container {
   background-color: rgb(174, 206, 250);
   max-width: 700px;
@@ -49,7 +49,12 @@ input{
   cursor: pointer;
   transform: translateY(2px);
 }
+.create-container{
+  display: flex;
+  flex-direction:row-reverse;
 
+  gap:5px
+}
 .result-container {
   display: flex;
   flex-direction: column;
@@ -68,7 +73,7 @@ input{
 }
 .result-img {
   height: 50px;
-  width: 100px;
+  width: 150px;
   border-radius: 10px;
   margin-bottom: 5px;
 }
@@ -88,22 +93,48 @@ input{
   transform: translateY(2px);
 } */
 /* .ad {
-  background-color: bisque;
+  background-color: rgb(172, 134, 89);
+  min-height: 300px;
+  margin: 10px;
   width: 250px;
-  height: 300px;
   border-radius: 10px;
   justify-items: center;
+  
+}
+.ad a{
+  background-color:#929498 ;
+  width: 70px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+
+}
+.ad a:hover{
+  background-color: #c7cad0;
+}
+.playList{
+  border:1px solid #d36f27;
+  background-color: #929498;
+  border-radius: 15px;
+  width: 190px;
+  height: 100px;
+  text-align: center;
+  margin-top: 5px;
+}
+.playList p{
+  margin-top: 10px;
 } */
 
 #filter-container {
   display: flex;
-  margin: 30px;
+  margin: 20px;
   border-bottom: 1px solid black;
 }
 
 .tracksbutton,
 .artistsbutton {
   background-color: rgb(165, 195, 238);
+  max-height: 50px;
   border: 1px solid black;
   padding: 8px 25px;
   font-weight: bold;
@@ -122,16 +153,33 @@ input{
 .result-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 150px;
   padding: 10px;
   border-bottom: 1px solid #ddd;
+  margin:20px 20px;
+  width: 700px;
+}
+.topSide{
+  
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color:  #1a2ca3;
+  height: 309px;
+
+
 }
 
 .image {
-  width: 50px;
-  height: 50px;
-  border-radius: 6px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
   object-fit: cover;
+transition:transform 0.3s ease;    
+
+}
+.image:hover{
+  transform: scale(1.1);
 }
 
 .details-btn {
@@ -144,36 +192,32 @@ input{
   cursor: pointer;
 }
 
+
 @media (min-width: 601px) and (max-width: 1024px) {
-  .result-item {
-    gap: 15px;
-  }
-  #result {
-    gap: 1px;
-  }
+ #results{
+  min-width: 500px;
+ }
+ .result-item{
+  gap: 70px;
+ }
+  
 }
 @media (max-width: 600px) {
-  body {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
+  
+
+  #filter-container{
+    margin-left: 110px;
   }
-  main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  #result {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  
+  .result-item{
+  max-width: 375px;
+  gap: 50px;
   }
   .search-container {
     display: flex;
     justify-content: center;
     margin-right: 100px;
-    min-width: 250px;
+    min-width: 350px;
   }
   form {
     display: flex;
@@ -185,17 +229,18 @@ input{
   }
   input#mySearch {
     font-size: 12px;
-  }
+  } 
 
-  .result-item {
+  .create-container {
     display: block;
     margin-bottom: 10px;
+    
   }
-  .result-img {
-    width: 200px;
-    height: 200px;
+   .image{
+    width: 50px;
+    height: 50px;
   }
-  P {
+  p{
     font-size: 13px;
     text-align: center;
     padding-bottom: 10px;
@@ -209,4 +254,5 @@ input{
     padding-left: 5px;
     padding-right: 5px;
   }
+
 }

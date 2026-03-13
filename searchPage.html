@@ -10,10 +10,10 @@
     <script type="module" src="./scripts/SpotifyService.js"></script>
     <script type="module" src="./scripts/search.js"></script>
 
-
     <title>searchPage</title>
   </head>
   <body>
+    <section class="topSide">
     <header class="header">
       <div class="logo">
         <img src="./assets/logo1.png" alt="Music Match Logo" />
@@ -27,86 +27,25 @@
       <div class="search-container">
         <form>
           <label for="mySearch"></label>
-          <input type="search" name="search" id="mySearch" value="" placeholder="Zoek naar artiest of nummer
-" />
+          <input
+            type="search"
+            name="search"
+            id="mySearch"
+            value=""
+            placeholder="Zoek naar artiest of nummer
+"
+          />
           <button class="searchButton" type="submit">Zoeken</button>
         </form>
       </div>
       <div id="filter-container">
         <button class="tracksbutton active">Nummers</button>
         <button class="artistsbutton">Artiesten</button><b></b>
+        
       </div>
+</section>
       <div id="results"></div>
-      <!-- <section id="result">
-        <div class="result-container">
-          <h2>Zoekresultaat</h2>
-          <div class="result-item">
-            <img
-              src="./assets/otherProjects.png"
-              alt="Album cover"
-              class="result-img"
-            />
-
-            <div class="result-info">
-              <p>Nummer naam /</p>
-              <p>Artiest</p>
-            </div>
-            <a href="./detailPage.html" class="detail-btn">Details</a>
-          </div>
-          <div class="result-item">
-            <img
-              src="./assets/otherProjects.png"
-              alt="Album cover"
-              class="result-img"
-            />
-
-            <div class="result-info">
-              <p>Nummer naam /</p>
-              <p>Artiest</p>
-            </div>
-            <a href="./detailPage.html" class="detail-btn">Details</a>
-          </div>
-          <div class="result-item">
-            <img
-              src="./assets/otherProjects.png"
-              alt="Album cover"
-              class="result-img"
-            />
-
-            <div class="result-info">
-              <p>Nummer naam /</p>
-              <p>Artiest</p>
-            </div>
-            <a href="./detailPage.html" class="detail-btn">Details</a>
-          </div>
-          <div class="result-item">
-            <img
-              src="./assets/otherProjects.png"
-              alt="Album cover"
-              class="result-img"
-            />
-            <div class="result-info">
-              <p>Nummer naam /</p>
-              <p>Artiest</p>
-            </div>
-            <a href="./detailPage.html" class="detail-btn">Details</a>
-          </div>
-
-          <div class="result-item">
-            <img
-              src="./assets/otherProjects.png"
-              alt="Album cover"
-              class="result-img"
-            />
-            <div class="result-info">
-              <p>Nummer naam /</p>
-              <p>Artist</p>
-            </div>
-            <a href="./detailPage.html" class="detail-btn">Details</a>
-          </div>
-        </div> -->
-        <!-- <div class="ad"><p>ad</p></div> -->
-      <!-- </section> -->
+     
     </main>
   </body>
 </html>
