@@ -52,7 +52,11 @@ nav a {
   font-weight: bold;
   transition: 0.3s ease;
 }
-
+.home {
+  font-size: 35px;
+  
+  background-color: rgb(181, 181, 195);
+}
 #login {
   background-color: var(--bg);
 }

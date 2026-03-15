@@ -1,82 +1,163 @@
-// import { getRecommendations } from "./SpotifyService.js";
+// scripts/generator.js
+import { searchSpotify } from "./SpotifyService.js";
 
-// // MOOD BUTTONS
-// const moodButtons = document.querySelectorAll(".mood-section button");
-// let selectedMood = null;
+const moodButtons = document.querySelectorAll(".mood-section button");
+const genreButtons = document.querySelectorAll(".genre-section button");
+const durationSelect = document.getElementById("duration");
+const tempoSlider = document.getElementById("tempo");
+const popularitySelect = document.getElementById("popularity");
+const playlist = document.getElementById("playlist");
+const generateBtn = document.querySelector(".playList-generate");
 
-// moodButtons.forEach(btn => {
-//   btn.addEventListener("click", () => {
-//     moodButtons.forEach(b => b.classList.remove("active"));
-//     btn.classList.add("active");
-//     selectedMood = btn.textContent.trim();
-//   });
-// });
+let selectedMood = "";
+let selectedGenre = "";
+let selectedDuration = 15;
+let selectedTempo = 50;
+let selectedPopularity = "Populair";
 
-// // GENRE BUTTONS
-// const genreButtons = document.querySelectorAll(".genre-section button");
-// let selectedGenre = null;
+// MOOD
+moodButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    selectedMood = btn.textContent.trim();
+  });
+});
 
-// genreButtons.forEach(btn => {
-//   btn.addEventListener("click", () => {
-//     genreButtons.forEach(b => b.classList.remove("active"));
-//     btn.classList.add("active");
-//     selectedGenre = btn.textContent.toLowerCase();
-//   });
-// });
+// GENRE
+genreButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    selectedGenre = btn.textContent.trim();
+  });
+});
 
-// // SETTINGS
-// const tempoInput = document.querySelector("#tempo");
-// const popularityInput = document.querySelector("#popularity");
+// DUUR
+durationSelect.addEventListener("change", () => {
+  selectedDuration = Number(durationSelect.value);
+});
 
-// // PLAYLIST BUTTON
-// const generateBtn = document.querySelector(".playList-generate");
+// TEMPO
+tempoSlider.addEventListener("input", () => {
+  selectedTempo = Number(tempoSlider.value);
+});
 
-// // PLAYLIST OUTPUT
-// const playlistSection = document.querySelector("#playlist");
+// POPULARITEIT
+popularitySelect.addEventListener("change", () => {
+  selectedPopularity = popularitySelect.value;
+});
 
-// // MOOD → tempo/popularity mapping
-// const moodSettings = {
-//   "😎 Chill": { tempo: 80, popularity: 50 },
-//   "🏃Energiek": { tempo: 140, popularity: 80 },
-//   "😴 Slaap": { tempo: 50, popularity: 20 },
-//   "💔 Verdrietig": { tempo: 70, popularity: 40 }
-// };
+// GENERATE PLAYLIST
+generateBtn.addEventListener("click", async () => {
+  const query = `${selectedMood} ${selectedGenre}`.trim() || "chill";
 
-// generateBtn.addEventListener("click", async () => {
-//   if (!selectedMood || !selectedGenre) {
-//     alert("Kies eerst een stemming en een genre!");
-//     return;
-//   }
+  const data = await searchSpotify(query);
+  let tracks = data.tracks.items;
 
-//   // mood settings
-//   const mood = moodSettings[selectedMood];
+  // 1) FILTER OP DUUR
+  const maxMs = selectedDuration * 60 * 1000;
+  tracks = tracks.filter((t) => t.duration_ms <= maxMs);
 
-//   const data = await getRecommendations({
-//     genre: selectedGenre,
-//     tempo: tempoInput.value || mood.tempo,
-//     popularity: popularityInput.value === "Trending" ? 80 :
-//                 popularityInput.value === "Nieuw" ? 40 : 60
-//   });
+  // 2) FILTER OP TEMPO (simpele benadering via popularity)
+  if (selectedTempo < 33) {
+    tracks = tracks.filter((t) => t.popularity < 40);
+  } else if (selectedTempo > 66) {
+    tracks = tracks.filter((t) => t.popularity > 60);
+  }
 
-//   renderPlaylist(data.tracks);
-// });
+  // 3) FILTER OP POPULARITEIT
+  if (selectedPopularity === "Trending") {
+    tracks = tracks.filter((t) => t.popularity > 70);
+  }
+  if (selectedPopularity === "Nieuw") {
+    tracks = tracks.filter((t) => t.album.release_date > "2023-01-01");
+  }
+  if (selectedPopularity === "Populair") {
+    tracks = tracks.filter((t) => t.popularity > 50);
+  }
 
-// // RENDER PLAYLIST
-// function renderPlaylist(tracks) {
-//   playlistSection.innerHTML = "";
+  renderPlaylist(tracks);
+});
 
-//   tracks.forEach(track => {
-//     const html = `
-//       <div class="card">
-//         <div class="img">
-//           <img src="${track.album.images[1]?.url || ""}" />
-//           <div class="liked">&#10084</div>
-//         </div>
-//         <h2>${track.name}</h2>
-//         <p>${track.artists.map(a => a.name).join(", ")}</p>
-//         <button type="button" class="play-preview">Afspeel Preview</button>
-//       </div>
-//     `;
-//     playlistSection.insertAdjacentHTML("beforeend", html);
-//   });
-// }
+// RENDER PLAYLIST
+function renderPlaylist(tracks) {
+  playlist.innerHTML = "";
+
+  tracks.forEach((track) => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    const previewUrl = track.preview_url;
+
+    card.innerHTML = `
+      <div class="img">
+        <img src="${track.album.images[1]?.url || ""}" alt="cover" />
+        <div class="liked" data-id="${track.id}">&#10084;</div>
+      </div>
+      <h2>${track.name}</h2>
+      <p>${track.artists[0].name}</p>
+      <button type="button" class="play-preview" data-preview="${previewUrl}">
+        Afspeel Preview
+      </button>
+    `;
+
+    playlist.appendChild(card);
+  });
+
+  activatePreviewButtons();
+  activateLikeButtons();
+}
+
+// PREVIEW AUDIO
+function activatePreviewButtons() {
+  const buttons = document.querySelectorAll(".play-preview");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const url = btn.dataset.preview;
+      if (!url) {
+        alert("Geen preview beschikbaar");
+        return;
+      }
+
+      const audio = new Audio(url);
+      audio.play();
+    });
+  });
+}
+
+// LIKE OPSLAAN
+function activateLikeButtons() {
+  const hearts = document.querySelectorAll(".liked");
+
+  hearts.forEach((heart) => {
+    heart.addEventListener("click", () => {
+      const id = heart.dataset.id;
+
+      let liked = JSON.parse(localStorage.getItem("likedTracks")) || [];
+
+      if (!liked.includes(id)) {
+        liked.push(id);
+        heart.style.color = "red";
+      } else {
+        liked = liked.filter((x) => x !== id);
+        heart.style.color = "white";
+      }
+
+      localStorage.setItem("likedTracks", JSON.stringify(liked));
+    });
+  });
+}
+moodButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    moodButtons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    selectedMood = btn.textContent.trim();
+  });
+});
+
+genreButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    genreButtons.forEach((b) => 
+      b.classList.remove("active"));
+    btn.classList.add("active");
+    selectedGenre= btn.textContent.trim();
+  });
+});
