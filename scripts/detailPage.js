@@ -1,16 +1,27 @@
+
 "use strict";
 
 fetch("./json/data.json")
   .then((response) => response.json())
   .then((data) => {
-    const artistData = data[4]; 
+
+    // 1. Artiest uit URL halen
+    const params = new URLSearchParams(window.location.search);
+    const artistName = params.get("artist");
+
+    // 2. Juiste artiest zoeken in JSON
+    const artistData = data.find(a => a.artist === artistName);
+
+    if (!artistData) {
+      document.querySelector("main").innerHTML = "<h2>Artiest niet gevonden</h2>";
+      return;
+    }
 
     const main = document.querySelector("main");
 
-
+    // --- ARTIEST INFO ---
     const artistSection = document.createElement("section");
     artistSection.classList.add("artist-info");
-
 
     const artistImageDiv = document.createElement("div");
     artistImageDiv.classList.add("artist-image");
@@ -19,13 +30,12 @@ fetch("./json/data.json")
     img.alt = artistData.artist;
     artistImageDiv.appendChild(img);
 
-
     const artistDetails = document.createElement("div");
     artistDetails.classList.add("artist-details");
 
-    const artistName = document.createElement("h1");
-    artistName.classList.add("artist-name");
-    artistName.textContent = artistData.artist;
+    const artistNameEl = document.createElement("h1");
+    artistNameEl.classList.add("artist-name");
+    artistNameEl.textContent = artistData.artist;
 
     const artistBio = document.createElement("p");
     artistBio.classList.add("artist-bio");
@@ -40,7 +50,7 @@ fetch("./json/data.json")
       genresDiv.appendChild(span);
     });
 
-    artistDetails.appendChild(artistName);
+    artistDetails.appendChild(artistNameEl);
     artistDetails.appendChild(artistBio);
     artistDetails.appendChild(genresDiv);
 
@@ -49,6 +59,7 @@ fetch("./json/data.json")
 
     main.insertBefore(artistSection, main.querySelector("h1.top-songs-h2"));
 
+    // --- TOP SONGS ---
     const topSongsH2 = document.createElement("h1");
     topSongsH2.classList.add("top-songs-h2");
     topSongsH2.textContent = "Top Songs";

@@ -10,6 +10,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-items: center;
   gap: 5px;
 }
 .search-container {
@@ -49,7 +50,7 @@ input {
   transform: translateY(2px);
 }
 
-.create-container {
+/* .create-container {
   display: flex;
   flex-direction: row-reverse;
 
@@ -60,7 +61,7 @@ input {
   flex-direction: column;
   gap: 10px;
   color: rgb(234, 228, 228);
-}
+} */
 
 .result-item {
   background-color: rgb(6, 39, 110);
@@ -153,6 +154,7 @@ main {
   margin: 20px 0 10px;
   font-size: 22px;
   font-weight: bold;
+  text-align: center;
 }
 
 .home-row {
@@ -189,7 +191,7 @@ main {
   border-radius: 50%;
 }
 
-.create-playlist-btn {
+/* .create-playlist-btn {
   background-color: rgb(24, 28, 109);
   border: 2px solid rgb(70, 70, 156);
   padding: 15px 25px;
@@ -205,30 +207,9 @@ main {
 .create-playlist-btn:hover {
   background-color: rgb(44, 43, 124);
   transform: translateY(2px);
-}
-
-/* .mood-btn {
-  background-color: rgb(24, 28, 109);
-  border: 2px solid rgb(70, 70, 156);
-  padding: 10px 20px;
-  border-radius: 20px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s ease;
 } */
- /* <h2 class="section-title">✨ Kies een stemming</h2>
-    <div class="home-row">
-      <button class="mood-btn">😌 Chill</button>
-      <button class="mood-btn">💪 Workout</button>
-      <button class="mood-btn">😢 Sad</button>
-      <button class="mood-btn">😎 Party</button>
-      <button class="mood-btn">🚗 Roadtrip</button>
-    </div>
 
-.mood-btn:hover {
-  background-color: rgb(44, 43, 124);
-} */
+
 @media (min-width: 601px) and (max-width: 1024px) {
   #results {
     min-width: 500px;

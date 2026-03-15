@@ -1,146 +1,151 @@
-// import { searchSpotify } from "./SpotifyService.js";
-import { 
-  searchSpotify, 
-  getTrendingTracks, 
-  getPopularArtists 
-} from "./SpotifyService.js";
-
-
-
+"use strict";
 
 const form = document.querySelector("form");
 const input = document.querySelector("#mySearch");
 const resultsContainer = document.querySelector("#results");
-
+const homeContainer = document.querySelector("#home-sections");
 const tracksButton = document.querySelector(".tracksbutton");
 const artistsButton = document.querySelector(".artistsbutton");
 
+let artists = [];
 let lastSearchData = null;
 
-// Zoekactie
-form.addEventListener("submit", async (e) => {
+// 1. JSON inladen
+fetch("./json/data.json")
+  .then(res => res.json())
+  .then(data => {
+    artists = data;
+    renderHomeSections(); // startpagina tonen
+  })
+  .catch(err => console.error("JSON error:", err));
+
+
+// 2. Zoeken bij submit
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  const query = input.value.trim();
-  if (!query) return;
-
-  const data = await searchSpotify(query);
-  lastSearchData = data;
-
-  renderResults();
+  handleSearch();
 });
 
-// Filterknoppen
+// 3. Zoeken tijdens typen
+input.addEventListener("input", () => {
+  if (input.value.trim() === "") {
+    lastSearchData = null;
+    renderHomeSections();
+  } else {
+    handleSearch();
+  }
+});
+
+
+// 4. FILTER KNOPPEN
 tracksButton.addEventListener("click", () => {
   tracksButton.classList.add("active");
   artistsButton.classList.remove("active");
-  renderResults();
+
+  if (lastSearchData) {
+    renderResults(input.value.trim().toLowerCase());
+  }
 });
 
 artistsButton.addEventListener("click", () => {
   artistsButton.classList.add("active");
   tracksButton.classList.remove("active");
-  renderResults();
+
+  if (lastSearchData) {
+    renderResults(input.value.trim().toLowerCase());
+  }
 });
 
-// Renderfunctie
-function renderResults() {
- if (!lastSearchData) {
-  renderHomeSections();
-  return;
+
+// 5. Zoekfunctie (artiest + nummer)
+function handleSearch() {
+  const query = input.value.trim().toLowerCase();
+  if (!query) return;
+
+  lastSearchData = artists.filter(a =>
+    a.artist.toLowerCase().includes(query) ||
+    a.tracks.some(t => t.title.toLowerCase().includes(query))
+  );
+
+  renderResults(query);
 }
 
-  resultsContainer.innerHTML = ""; // leegmaken
+
+// 6. Resultaten tonen (met filters)
+function renderResults(query) {
+  homeContainer.style.display = "none";
+  resultsContainer.style.display = "block";
 
   const showTracks = tracksButton.classList.contains("active");
 
+  resultsContainer.innerHTML = "";
+
+  // --- Alleen TRACKS tonen ---
   if (showTracks) {
-    const tracks = lastSearchData.tracks?.items || [];
+    lastSearchData.forEach(a => {
+      const matchedTracks = a.tracks.filter(t =>
+        t.title.toLowerCase().includes(query)
+      );
 
-    tracks.forEach((track) => {
-      const html = `
-        <div class="result-item">
-          <img src="${track.album.images[2]?.url || ""}" class="image" />
-          <div>
-            <strong>${track.name}</strong><br>
-            ${track.artists.map((a) => a.name).join(", ")}
+      matchedTracks.forEach(track => {
+        const html = `
+          <div class="result-item">
+            <img src="${a.image}" class="image" />
+            <div>
+              <strong>${track.title}</strong><br>
+              ${a.artist}
+            </div>
+            <a href="./detailPage.html?artist=${encodeURIComponent(a.artist)}" class="details-btn">Details</a>
           </div>
-          <button class="details-btn"><a href="./detailPage.html" class="detail-btn">Details</a></button>
-        </div>
-      `;
-      resultsContainer.insertAdjacentHTML("beforeend", html);
+        `;
+        resultsContainer.insertAdjacentHTML("beforeend", html);
+      });
     });
-  } else {
-    const artists = lastSearchData.artists?.items || [];
 
-    artists.forEach((artist) => {
-      const html = `
-        <div class="result-item">
-          <img src="${artist.images[2]?.url || ""}" class="image" />
-          <div>
-            <strong>${artist.name}</strong><br>
-            Populariteit: ${artist.popularity}
-          </div>
-          <button class="details-btn">Details</button>
-        </div>
-      `;
-      resultsContainer.insertAdjacentHTML("beforeend", html);
-    });
+    return;
   }
+
+  // --- Alleen ARTIESTEN tonen ---
+  lastSearchData.forEach(a => {
+    const html = `
+      <div class="result-item">
+        <img src="${a.image}" class="image" />
+        <div>
+          <strong>${a.artist}</strong><br>
+          ${a.genres.join(", ")}
+        </div>
+        <a href="./detailPage.html?artist=${encodeURIComponent(a.artist)}" class="details-btn">Details</a>
+      </div>
+    `;
+    resultsContainer.insertAdjacentHTML("beforeend", html);
+  });
 }
 
 
+// 7. Home-sections tonen
+function renderHomeSections() {
+  homeContainer.style.display = "block";
+  resultsContainer.style.display = "none";
 
-//  HOME DATA
-// =======================
-async function loadHomeData() {
-  const trendingData = await getTrendingTracks();
-  const artistsData = await getPopularArtists();
-
-  return {
-    trendingTracks: trendingData.tracks.items.slice(0, 3),
-    popularArtists: artistsData.artists.items.slice(0, 3)
-  };
-}
-//  HOME SECTIONS
-// =======================
-async function renderHomeSections() {
-  const homeData = await loadHomeData();
-
-  const trending = homeData.trendingTracks;
-  const artists = homeData.popularArtists;
-
-  resultsContainer.innerHTML = `
-    <button class="create-playlist-btn">🪄 Maak een playlist</button>
-
-    <h2 class="section-title">🔥 Trending nummers</h2>
+  homeContainer.innerHTML = `
+    <h2 class="section-title">🔥 Trending artiesten</h2>
     <div class="home-row">
-      ${trending.map(t => `
+      ${artists.slice(0, 3).map(a => `
         <div class="home-card">
-          <img src="${t.album.images[1]?.url || t.album.images[0]?.url}" class="home-img">
-          <p>${t.name} - ${t.artists.map(a => a.name).join(", ")}</p>
+          <img src="${a.image}" class="home-img round">
+          <p>${a.artist}</p>
         </div>
       `).join("")}
     </div>
 
-  <h2 class="section-title">🌍 Populaire artiesten</h2>
+    <h2 class="section-title">🌍 Populaire artiesten</h2>
     <div class="home-row">
-      ${artists.map(a => `
+      ${artists.slice(3, 6).map(a => `
         <div class="home-card">
-          <img src="${a.images?.[0]?.url || "./assets/default.png"}" class="home-img round">
-          <p>${a.name}</p>
+          <img src="${a.image}" class="home-img round">
+          <p>${a.artist}</p>
         </div>
       `).join("")}
     </div>
-
-   
   `;
-
-const createBtn = document.querySelector(".create-playlist-btn");
-
-createBtn.addEventListener("click", () => {
-  window.location.href = "./generator.html"; 
-});
 }
-
-renderHomeSections();
