@@ -22,6 +22,9 @@ if (!window.location.pathname.includes("landingPage.html")) {
 learnMore.addEventListener("click", (e) => {
   e.preventDefault();
   infoModal.style.display = "flex";
+  close3.addEventListener("click", () => {
+    infoModal.style.display = "none";
+  });
 });
 
 loginButton.addEventListener("click", () => {
@@ -52,7 +55,4 @@ loginModalButton.addEventListener("click", () => {
 
 close1.addEventListener("click", () => {
   modal.style.display = "none";
-});
-close3.addEventListener("click", () => {
-  infoModal.style.display = "none";
 });

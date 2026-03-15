@@ -1,4 +1,3 @@
-
 "use strict";
 
 fetch("./json/data.json")
