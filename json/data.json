@@ -3,7 +3,7 @@
     "artist": "Justin Timberlake",
     "description": "Justin Timberlake is een Amerikaanse zanger, songwriter, acteur en producent. Hij werd beroemd als lid van de boyband NSYNC in de jaren ’90. Timberlake heeft meerdere succesvolle soloalbums uitgebracht, waaronder Justified en FutureSex/LoveSounds. Zijn muziek combineert pop, R&B en funk-invloeden. Hij heeft talloze awards gewonnen, waaronder Grammy Awards. Naast muziek acteerde hij in films zoals The Social Network en Friends with Benefits. Timberlake staat bekend om zijn energieke optredens en veelzijdige talenten. Hij is ook actief in mode en filantropie. ",
     "image": "/assets/artists/justin.png",
-    "genres": ["Pop", "Contemporary R&B"],
+    "genres": ["Pop", "Contemporary R&B","Jazz"],
     "tracks": [
       {
         "title": "Sexy Back",
@@ -28,6 +28,12 @@
         "album": "The 20/20 Experience",
         "releaseDate": "2013",
         "genre": "Pop/R&B"
+      },
+      {
+        "title": "Midnight Whispers",
+        "album": "Blue Shadows",
+        "releaseDate": "2024",
+        "genre": "Jazz"
       }
     ]
   },
@@ -120,6 +126,18 @@
         "genre": "R&B/Pop"
       },
       {
+        "title": "7/11",
+        "album": "Beyoncé",
+        "releaseDate": "2014",
+        "genre": "Hip-Hop"
+      },
+      {
+        "title": "Sorry",
+        "album": "Lemonade",
+        "releaseDate": "2016",
+        "genre": "Hip-Hop/R&B"
+      },
+      {
         "title": "Formation",
         "album": "Lemonade",
         "releaseDate": "2016",
@@ -131,7 +149,7 @@
     "artist": "Billie Eilish",
     "description": "Billie Eilish Pirate Baird O'Connell is een Amerikaanse zangeres en songwriter bekend om haar donkere, sfeervolle muziek en fluisterachtige zangstijl. Ze brak door met 'Ocean Eyes' en won meerdere Grammy Awards, waaronder Album of the Year en Best New Artist.",
     "image": "/assets/artists/billie.png",
-    "genres": ["Pop", "Electropop", "Alternative"],
+    "genres": ["Pop", "Electropop", "Alternative","Jazz"],
     "tracks": [
       {
         "title": "Bad Guy",
@@ -156,6 +174,12 @@
         "album": "Happier Than Ever",
         "releaseDate": "2020",
         "genre": "Pop/Alternative"
+      },
+      {
+        "title": "Midnight Whispers",
+        "album": "Blue Shadows",
+        "releaseDate": "2024",
+        "genre": "Jazz"
       }
     ]
   }

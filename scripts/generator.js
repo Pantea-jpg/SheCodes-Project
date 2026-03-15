@@ -1,8 +1,5 @@
-
-import { searchSpotify } from "./SpotifyService.js";
-
-
-
+// VARIABLES
+// ==============================
 const moodButtons = document.querySelectorAll(".mood-section button");
 const genreButtons = document.querySelectorAll(".genre-section button");
 const durationSelect = document.getElementById("duration");
@@ -10,6 +7,7 @@ const tempoSlider = document.getElementById("tempo");
 const popularitySelect = document.getElementById("popularity");
 const playlist = document.getElementById("playlist");
 const generateBtn = document.querySelector(".playList-generate");
+const durationText = document.getElementById("playlist-duration"); // optional
 
 let selectedMood = "";
 let selectedGenre = "";
@@ -17,54 +15,54 @@ let selectedDuration = 15;
 let selectedTempo = 50;
 let selectedPopularity = "Populair";
 
+let artistsData = [];
 let currentAudio = null;
 
-// ===============================
+// ==============================
+// LOAD JSON
+// ==============================
+async function loadArtists() {
+  const response = await fetch("../json/data.json");
+  artistsData = await response.json();
+}
+
+loadArtists();
+
+// ==============================
 // MOOD BUTTONS
-// ===============================
+// ==============================
 moodButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
-
-    // Toggle gedrag
     if (btn.classList.contains("active")) {
       btn.classList.remove("active");
       selectedMood = "";
       return;
     }
-
-    // Eerst alle andere knoppen uitzetten
     moodButtons.forEach((b) => b.classList.remove("active"));
-
-    // Deze knop activeren
     btn.classList.add("active");
     selectedMood = btn.textContent.trim();
   });
 });
 
-// ===============================
+// ==============================
 // GENRE BUTTONS
-// ===============================
+// ==============================
 genreButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
-
-    // Toggle gedrag
     if (btn.classList.contains("active")) {
       btn.classList.remove("active");
       selectedGenre = "";
       return;
     }
-
-    // Andere knoppen uitzetten
     genreButtons.forEach((b) => b.classList.remove("active"));
-
-    // Deze knop activeren
     btn.classList.add("active");
     selectedGenre = btn.textContent.trim();
   });
 });
-// ===============================
+
+// ==============================
 // SELECTS
-// ===============================
+// ==============================
 durationSelect.addEventListener("change", () => {
   selectedDuration = Number(durationSelect.value);
 });
@@ -77,96 +75,153 @@ popularitySelect.addEventListener("change", () => {
   selectedPopularity = popularitySelect.value;
 });
 
-// ===============================
+// ==============================
+// SHUFFLE FUNCTION
+// ==============================
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+// ==============================
 // GENERATE PLAYLIST
-// ===============================
+// ==============================
 generateBtn.addEventListener("click", async () => {
-  let query = "pop";
-
-  if (selectedMood && selectedGenre) query = `${selectedMood} ${selectedGenre}`;
-  else if (selectedMood) query = selectedMood;
-  else if (selectedGenre) query = selectedGenre;
-
-  const data = await searchSpotify(query);
-  let tracks = data.tracks.items;
-
-  // 1) FILTER: ONLY TRACKS WITH PREVIEW
-  // tracks = tracks.filter((t) => t.preview_url);
-  let previewTracks = tracks.filter((t) => t.preview_url);
-  if (previewTracks.length > 0) {
-    tracks = previewTracks;
+  if (artistsData.length === 0) {
+    await loadArtists();
   }
 
-  // 2) FILTER: DURATION
-  // const maxMs = selectedDuration * 60 * 1000;
-  // tracks = tracks.filter((t) => t.duration_ms <= maxMs);
-  const maxMs = selectedDuration * 60 * 1000;
-  tracks = tracks.filter((t) => t.duration_ms <= maxMs);
+  let tracks = [];
 
-  // 3) FILTER: TEMPO (approx via popularity)
+  artistsData.forEach((artist) => {
+    // FILTER genre case-insensitive
+    if (
+      selectedGenre &&
+      !artist.genres.some((g) =>
+        g.toLowerCase().includes(selectedGenre.toLowerCase()),
+      )
+    ) {
+      return;
+    }
+
+    artist.tracks.forEach((track) => {
+      tracks.push({
+        id: track.title,
+        name: track.title,
+        artist: artist.artist,
+        album: track.album,
+        releaseDate: track.releaseDate,
+        genre: track.genre,
+        image: artist.image,
+      });
+    });
+  });
+
+  // ==========================
+  // MOOD FILTER
+  // ==========================
+  if (selectedMood === "😎 Chill") {
+    tracks = tracks.filter(
+      (t) =>
+        t.genre.includes("Pop") ||
+        t.genre.includes("R&B") ||
+        t.genre.includes("Alternative") ||
+        t.genre.includes("Jazz"),
+    );
+  } else if (selectedMood === "🏃Energiek") {
+    tracks = tracks.filter(
+      (t) =>
+        t.genre.includes("Hip-Hop") ||
+        t.genre.includes("Pop/Funk") ||
+        t.genre.includes("Pop/Electropop") ||
+        t.genre.includes("R&B/Pop"),
+    );
+  } else if (selectedMood === "😴 Slaap") {
+    tracks = tracks.filter(
+      (t) =>
+        t.genre.includes("Pop/Soul") ||
+        t.genre.includes("Pop/Folk") ||
+        t.genre.includes("Pop/Alternative") ||
+        t.genre.includes("Jazz"),
+    );
+  } else if (selectedMood === "💔 Verdrietig") {
+    tracks = tracks.filter(
+      (t) => t.genre.includes("Pop/Soul") || t.genre.includes("Pop/R&B"),
+    );
+  }
+  // ==========================
+  // TEMPO FILTER
+  // ==========================
   if (selectedTempo < 33) {
-    tracks = tracks.filter((t) => t.popularity < 60);
+    tracks = tracks.slice(0, 4);
   } else if (selectedTempo > 66) {
-    tracks = tracks.filter((t) => t.popularity > 40);
+    tracks = tracks.slice(0, 8);
   }
 
-  // 4) FILTER: POPULARITY
-  if (selectedPopularity === "Trending") {
-    tracks = tracks.filter((t) => t.popularity > 50);
-  }
+  // ==========================
+  // POPULARITY FILTER
+  // ==========================
   if (selectedPopularity === "Nieuw") {
-    tracks = tracks.filter((t) => t.album.release_date > "2022-01-01");
-  }
-  if (selectedPopularity === "Populair") {
-    tracks = tracks.filter((t) => t.popularity > 30);
-  }
-  if (tracks.length === 0) {
-    tracks = data.tracks.items.slice(0, 10);
+    tracks = tracks.filter((t) => Number(t.releaseDate) >= 2016);
+  } else if (selectedPopularity === "Trending") {
+    tracks = tracks.slice(0, 6);
+  } else if (selectedPopularity === "Populair") {
+    tracks = tracks.slice(0, 10);
   }
 
+  // ==========================
+  // SHUFFLE PLAYLIST
+  // ==========================
+  tracks = shuffleArray(tracks);
+
+  // ==========================
+  // RENDER PLAYLIST
+  // ==========================
   renderPlaylist(tracks);
 });
 
-// ===============================
-// RENDER PLAYLIST
-// ===============================
+// ==============================
+// RENDER PLAYLIST FUNCTION
+// ==============================
 function renderPlaylist(tracks) {
   playlist.innerHTML = "";
+
+  if (tracks.length === 0) {
+    playlist.innerHTML = "<p>Geen nummers gevonden 😢</p>";
+    return;
+  }
 
   tracks.forEach((track) => {
     const card = document.createElement("div");
     card.classList.add("card");
 
-    // const previewUrl = track.preview_url;
-    const previewUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+   const previewUrl= "https://samplelib.com/lib/preview/mp3/sample-15s.mp3";
     card.innerHTML = `
       <div class="img">
-        <img src="${track.album.images[1]?.url || ""}" alt="cover" />
+        <img src="${track.image}" alt="cover" />
         <div class="liked" data-id="${track.id}">&#10084;</div>
       </div>
       <h2>${track.name}</h2>
-      <p>${track.artists[0].name}</p>
-
-      ${
-        previewUrl
-          ? `<button type="button" class="play-preview" data-preview="${previewUrl}">
-               ▶ Afspeel Preview
-             </button>`
-          : `<button type="button" class="play-preview disabled" disabled>
-               Geen preview
-             </button>`
-      }
+      <p>${track.artist}</p>
+      <button class="play-preview" data-preview="${previewUrl}">
+        ▶ Afspeel Preview
+      </button>
     `;
-
     playlist.appendChild(card);
   });
 
   activatePreviewButtons();
   activateLikeButtons();
 }
-// ===============================
-// PREVIEW AUDIO
-// ===============================
+
+// ==============================
+// PLAY PREVIEW FUNCTION
+// ==============================
+
+  
 function activatePreviewButtons() {
   const buttons = document.querySelectorAll(".play-preview");
 
@@ -174,37 +229,22 @@ function activatePreviewButtons() {
     btn.addEventListener("click", () => {
       const url = btn.dataset.preview;
 
-      // ❗ Als er geen preview‑link is → doe niets
-      if (!url || url === "null" || url === "") {
-        return;
-      }
-
-      // ❗ Als dezelfde preview al speelt → stop hem
-      if (currentAudio && currentAudio.src === url) {
-        currentAudio.pause();
-        currentAudio = null;
-
-        // Zet knop terug naar standaard tekst
-        btn.textContent = "▶ Afspeel Preview";
-        return;
-      }
-
-      // ❗ Stop andere previews die al spelen
       if (currentAudio) {
         currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+
+        buttons.forEach((b) => (b.textContent = "▶ Afspeel Preview"));
+
+
+        return;
       }
 
-      // ▶ Start nieuwe audio
       currentAudio = new Audio(url);
       currentAudio.play();
 
-      // 🔄 Reset alle knoppen naar standaard tekst
-      buttons.forEach((b) => (b.textContent = "▶ Afspeel Preview"));
-
-      // ⏸ Verander de knop van deze track naar "Stop"
       btn.textContent = "⏸ Stop Preview";
 
-      // 🔚 Wanneer de audio klaar is → knop terugzetten
       currentAudio.onended = () => {
         btn.textContent = "▶ Afspeel Preview";
         currentAudio = null;
@@ -212,17 +252,20 @@ function activatePreviewButtons() {
     });
   });
 }
-// ===============================
+// ==============================
 // LIKE SYSTEM
-// ===============================
+// ==============================
 function activateLikeButtons() {
   const hearts = document.querySelectorAll(".liked");
 
   hearts.forEach((heart) => {
-    heart.addEventListener("click", () => {
-      const id = heart.dataset.id;
+    const id = heart.dataset.id;
+    let liked = JSON.parse(localStorage.getItem("likedTracks")) || [];
 
-      let liked = JSON.parse(localStorage.getItem("likedTracks")) || [];
+    if (liked.includes(id)) heart.classList.add("active");
+
+    heart.addEventListener("click", () => {
+      liked = JSON.parse(localStorage.getItem("likedTracks")) || [];
 
       if (!liked.includes(id)) {
         liked.push(id);
@@ -236,3 +279,32 @@ function activateLikeButtons() {
     });
   });
 }
+async function renderLikedSongs() {
+  if (artistsData.length === 0) {
+    await loadArtists();
+  }
+
+  let liked = JSON.parse(localStorage.getItem("likedTracks")) || [];
+  let likedTracks = [];
+
+  artistsData.forEach((artist) => {
+    artist.tracks.forEach((track) => {
+      if (liked.includes(track.title)) {
+        likedTracks.push({
+          id: track.title,
+          name: track.title,
+          artist: artist.artist,
+          album: track.album,
+          releaseDate: track.releaseDate,
+          genre: track.genre,
+          image: artist.image,
+        });
+      }
+    });
+  });
+
+  renderPlaylist(likedTracks);
+}
+document.getElementById("open-liked").addEventListener("click", () => {
+  renderLikedSongs();
+});
