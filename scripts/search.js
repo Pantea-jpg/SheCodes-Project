@@ -65,7 +65,7 @@ function renderResults() {
             <strong>${track.name}</strong><br>
             ${track.artists.map((a) => a.name).join(", ")}
           </div>
-          <button class="details-btn">Details</button>
+          <button class="details-btn"><a href="./detailPage.html" class="detail-btn">Details</a></button>
         </div>
       `;
       resultsContainer.insertAdjacentHTML("beforeend", html);

@@ -8,17 +8,18 @@ const close2 = document.querySelector(".close-2");
 const projectA = document.querySelector(".projects.project-a");
 const projectB = document.querySelector(".projects.project-b");
 const accessDenied = document.querySelector(".access-denied");
-
-
-
+const errormessage = document.querySelector("#error-success");
 
 projectsMusicMatch.addEventListener("click", () => {
+  errormessage.textContent = "";
+  document.querySelector("#password").value = "";
+  document.querySelector("#username").value = "";
+  errormessage.className = "";
   modal.style.display = "flex";
   close1.addEventListener("click", () => {
     modal.style.display = "none";
   });
 });
-
 
 projectA.addEventListener("click", () => {
   accessDenied.style.display = "flex";
