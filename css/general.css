@@ -54,7 +54,7 @@ nav a {
 }
 .home {
   font-size: 35px;
-  
+
   background-color: rgb(181, 181, 195);
 }
 #login {
@@ -118,6 +118,30 @@ nav a:hover {
   z-index: 1000;
 }
 
+/* info pop up */
+#info-content {
+  width: 420px;
+  max-width: 90%;
+  gap: 15px;
+  
+}
+
+#info-content h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary);
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 4px 10px rgba(226, 63, 42, 0.342);
+  text-align: left;
+}
+
+#info-content p {
+  line-height: 1.6;
+  color: #333;
+  font-size: 0.95rem;
+}
+
 .modal-content {
   background: white;
   padding: 35px;
@@ -152,14 +176,9 @@ nav a:hover {
   margin-bottom: 15px;
 }
 
-.close-1 {
-  position: absolute;
-  font-size: 2rem;
-  left: 140px;
-  top: 40px;
-}
-
-.close-2 {
+.close-2,
+.close-1,
+.close-3 {
   position: absolute;
   font-size: 2rem;
   left: 140px;
@@ -199,7 +218,7 @@ input::placeholder {
   transition: 0.2s;
 }
 
-.buttons{
+.buttons {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -241,16 +260,17 @@ input::placeholder {
   flex-direction: column;
 }
 
-.green , .red {
+.green,
+.red {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #ddd;
   font-size: 14px;
 }
 
-.green{
+.green {
   background-color: rgba(172, 255, 47, 0.325);
 }
-.red{
+.red {
   background-color: rgba(221, 66, 66, 0.441);
 }

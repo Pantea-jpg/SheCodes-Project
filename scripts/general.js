@@ -3,18 +3,26 @@
 const loginButton = document.querySelector("#login");
 const modal = document.getElementById("loginModal");
 const close1 = document.querySelector(".close-1");
+const close3 = document.querySelector(".close-3");
 const logo = document.querySelector(".logo");
 const loginModalButton = document.querySelector(".login-button");
 const errormessage = document.querySelector("#error-success");
+const infoModal = document.querySelector("#infoModal");
+const learnMore = document.querySelector("#learn-more");
 
 const usernameTest = "pantea@ap.be";
 const passwordTest = "1234";
 
-if (!window.location.pathname === "landingPage.html") {
+if (!window.location.pathname.includes("landingPage.html")) {
   logo.addEventListener("click", () => {
     window.location.href = "./searchPage.html";
   });
 }
+
+learnMore.addEventListener("click", (e) => {
+  e.preventDefault();
+  infoModal.style.display = "flex";
+});
 
 loginButton.addEventListener("click", () => {
   errormessage.textContent = "";
@@ -44,4 +52,7 @@ loginModalButton.addEventListener("click", () => {
 
 close1.addEventListener("click", () => {
   modal.style.display = "none";
+});
+close3.addEventListener("click", () => {
+  infoModal.style.display = "none";
 });
