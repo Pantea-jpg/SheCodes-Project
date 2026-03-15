@@ -1,6 +1,6 @@
 // Authorization token that must have been created previously. See : https://developer.spotify.com/documentation/web-api/concepts/authorization
 const token =
-  "BQCdUnIEVJ4f2grd2IuQTurynyRZPkCzHrFq01ZuyQahvkBZqkjtGno8VSkRJH70HYRyQ7vggH-hvsRDCujXDHosvO72MCJG_rPNOjeHInF81vZo7N9Z_rA_q5-Y5wiySSLQtgf3dkngfeVxH5Coq3uskfb1NfdfGqhEbM9zNDQJpzGEjWg89ZwWeM2tYCP91PFNAVxnFIps-h9L1uQvm1QyMmiU94i3DnEEy1ZMIGnddfv8shk8BHzFTStOGL9F1Hoz8xCyeRxI5dMeK-u75n9UJqkrIzXIShINRH9dxUkl3YUA5NzCc7kLq7R5JvxnNAwQ";
+  "BQAHE-yZ5VLP5CaFcO1gt6ow6bYS6soB9jHKbBz0_xTrdZJqF4rTZC4gY0z0DGZXby2EiXhOAYlcBFr5_eaaVumSCwF0vN6Ghnq9mkPAk0mk4FEoFeRiJ8_b60LMcieLseXTFC8Mw_g";
 
 const headers = {
   Authorization: `Bearer ${token}`,

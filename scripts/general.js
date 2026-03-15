@@ -10,9 +10,11 @@ const errormessage = document.querySelector("#error-success");
 const usernameTest = "pantea@ap.be";
 const passwordTest = "1234";
 
-logo.addEventListener("click", () => {
-  window.location.href = "./searchPage.html";
-});
+if (!window.location.pathname === "landingPage.html") {
+  logo.addEventListener("click", () => {
+    window.location.href = "./searchPage.html";
+  });
+}
 
 loginButton.addEventListener("click", () => {
   errormessage.textContent = "";
@@ -34,6 +36,9 @@ loginModalButton.addEventListener("click", () => {
   } else {
     errormessage.classList.add("green");
     errormessage.textContent = "Je hebt successful ingelogd!";
+    setTimeout(() => {
+      window.location.href = "./searchPage.html";
+    }, 2000);
   }
 });
 
