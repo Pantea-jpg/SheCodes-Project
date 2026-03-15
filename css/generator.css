@@ -4,6 +4,10 @@ main {
   font-size: 10px;
   justify-content: center;
   gap: 30px;
+margin: 0px 30px 0px 30px; 
+
+ 
+  
 }
 .mood-section {
   display: flex;
@@ -111,14 +115,11 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 .card {
   display: grid;
-  /* align-items: center; */
+
   justify-items: center;
   grid-template-rows: auto auto auto;
-
-  /* justify-content: center; */
-  background-color: rgb(87, 86, 184);
+   background-color: rgb(87, 86, 184);
   width: 150px;
-  /* height: 200px; */
   height: auto;
   margin-bottom: 20px;
   border-radius: 10px;
@@ -144,6 +145,7 @@ button.play-preview {
 
 #playlist {
   display: flex;
+  flex-wrap:wrap;
   align-items: center;
   justify-content: center;
   gap: 30px;
@@ -156,26 +158,26 @@ button.play-preview {
   background: none;
   border: none;
   cursor: pointer;
-  color: #1b1919;
+  /* color: #1b1919; */
 }
 .liked.active {
   color: red;
 }
-button.active{
+button.active {
   background-color: #ff8c42;
   color: white;
   transform: scale(1.05);
   border: 2px solid white;
-
 }
-select:focus{
+select:focus {
   border: 2px solid #ff8c42;
   outline: none;
-
 }
 #tempo:active {
   accent-color: #ff8c42;
 }
+
+
 @media (min-width: 601px) and (max-width: 1024px) {
   main {
     display: flex;
