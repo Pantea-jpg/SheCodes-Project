@@ -7,6 +7,7 @@ const homeContainer = document.querySelector("#home-sections");
 const tracksButton = document.querySelector(".tracksbutton");
 const artistsButton = document.querySelector(".artistsbutton");
 
+
 let artists = [];
 let lastSearchData = null;
 
