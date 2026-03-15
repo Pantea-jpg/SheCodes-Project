@@ -12,13 +12,12 @@ let lastSearchData = null;
 
 // 1. JSON inladen
 fetch("./json/data.json")
-  .then(res => res.json())
-  .then(data => {
+  .then((res) => res.json())
+  .then((data) => {
     artists = data;
     renderHomeSections(); // startpagina tonen
   })
-  .catch(err => console.error("JSON error:", err));
-
+  .catch((err) => console.error("JSON error:", err));
 
 // 2. Zoeken bij submit
 form.addEventListener("submit", (e) => {
@@ -35,7 +34,6 @@ input.addEventListener("input", () => {
     handleSearch();
   }
 });
-
 
 // 4. FILTER KNOPPEN
 tracksButton.addEventListener("click", () => {
@@ -56,20 +54,19 @@ artistsButton.addEventListener("click", () => {
   }
 });
 
-
 // 5. Zoekfunctie (artiest + nummer)
 function handleSearch() {
   const query = input.value.trim().toLowerCase();
   if (!query) return;
 
-  lastSearchData = artists.filter(a =>
-    a.artist.toLowerCase().includes(query) ||
-    a.tracks.some(t => t.title.toLowerCase().includes(query))
+  lastSearchData = artists.filter(
+    (a) =>
+      a.artist.toLowerCase().includes(query) ||
+      a.tracks.some((t) => t.title.toLowerCase().includes(query)),
   );
 
   renderResults(query);
 }
-
 
 // 6. Resultaten tonen (met filters)
 function renderResults(query) {
@@ -82,12 +79,12 @@ function renderResults(query) {
 
   // --- Alleen TRACKS tonen ---
   if (showTracks) {
-    lastSearchData.forEach(a => {
-      const matchedTracks = a.tracks.filter(t =>
-        t.title.toLowerCase().includes(query)
+    lastSearchData.forEach((a) => {
+      const matchedTracks = a.tracks.filter((t) =>
+        t.title.toLowerCase().includes(query),
       );
 
-      matchedTracks.forEach(track => {
+      matchedTracks.forEach((track) => {
         const html = `
           <div class="result-item">
             <img src="${a.image}" class="image" />
@@ -95,7 +92,7 @@ function renderResults(query) {
               <strong>${track.title}</strong><br>
               ${a.artist}
             </div>
-            <a href="./detailPage.html?artist=${encodeURIComponent(a.artist)}" class="details-btn">Details</a>
+            <a href="./detailPage.html?artist=${a.artist}" class="details-btn">Details</a>
           </div>
         `;
         resultsContainer.insertAdjacentHTML("beforeend", html);
@@ -106,7 +103,7 @@ function renderResults(query) {
   }
 
   // --- Alleen ARTIESTEN tonen ---
-  lastSearchData.forEach(a => {
+  lastSearchData.forEach((a) => {
     const html = `
       <div class="result-item">
         <img src="${a.image}" class="image" />
@@ -114,13 +111,12 @@ function renderResults(query) {
           <strong>${a.artist}</strong><br>
           ${a.genres.join(", ")}
         </div>
-        <a href="./detailPage.html?artist=${encodeURIComponent(a.artist)}" class="details-btn">Details</a>
+        <a href="./detailPage.html?artist=${a.artist}" class="details-btn">Details</a>
       </div>
     `;
     resultsContainer.insertAdjacentHTML("beforeend", html);
   });
 }
-
 
 // 7. Home-sections tonen
 function renderHomeSections() {
@@ -130,22 +126,32 @@ function renderHomeSections() {
   homeContainer.innerHTML = `
     <h2 class="section-title">🔥 Trending artiesten</h2>
     <div class="home-row">
-      ${artists.slice(0, 3).map(a => `
+      ${artists
+        .slice(0, 3)
+        .map(
+          (a) => `
         <div class="home-card">
           <img src="${a.image}" class="home-img round">
           <p>${a.artist}</p>
         </div>
-      `).join("")}
+      `,
+        )
+        .join("")}
     </div>
 
     <h2 class="section-title">🌍 Populaire artiesten</h2>
     <div class="home-row">
-      ${artists.slice(3, 6).map(a => `
+      ${artists
+        .slice(3, 6)
+        .map(
+          (a) => `
         <div class="home-card">
           <img src="${a.image}" class="home-img round">
           <p>${a.artist}</p>
         </div>
-      `).join("")}
+      `,
+        )
+        .join("")}
     </div>
   `;
 }
