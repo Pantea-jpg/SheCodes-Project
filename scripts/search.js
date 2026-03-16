@@ -92,7 +92,7 @@ function renderResults(query) {
               <strong>${track.title}</strong><br>
               ${a.artist}
             </div>
-            <a href="./detailPage1.html" class="details-btn">Details</a>
+            <a href="${a.page}" class="details-btn">Details</a>
           </div>
         `;
         resultsContainer.insertAdjacentHTML("beforeend", html);
@@ -110,7 +110,8 @@ function renderResults(query) {
           <strong>${a.artist}</strong><br>
           ${a.genres.join(", ")}
         </div>
-        <a href="./detailPage.html?artist=${a.artist}" class="details-btn">Details</a>
+        <a href="${a.page}" class="details-btn">Details</a>
+        
       </div>
     `;
     resultsContainer.insertAdjacentHTML("beforeend", html);
