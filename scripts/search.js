@@ -84,7 +84,21 @@ function renderResults(query) {
         t.title.toLowerCase().includes(query),
       );
 
-      matchedTracks.forEach((track) => {
+    //   matchedTracks.forEach((track) => {
+    //     const html = `
+    //       <div class="result-item">
+    //         <img src="${a.image}" class="image" />
+    //         <div>
+    //           <strong>${track.title}</strong><br>
+    //           ${a.artist}
+    //         </div>
+    //         <a href="./detailPage.html?artist=${a.artist}" class="details-btn">Details</a>
+    //       </div>
+    //     `;
+    //     resultsContainer.insertAdjacentHTML("beforeend", html);
+    //   });
+    // });
+ matchedTracks.forEach((track) => {
         const html = `
           <div class="result-item">
             <img src="${a.image}" class="image" />
@@ -92,13 +106,12 @@ function renderResults(query) {
               <strong>${track.title}</strong><br>
               ${a.artist}
             </div>
-            <a href="./detailPage.html?artist=${a.artist}" class="details-btn">Details</a>
+            <a href="./detailPage1.html" class="details-btn">Details</a>
           </div>
         `;
         resultsContainer.insertAdjacentHTML("beforeend", html);
       });
     });
-
     return;
   }
 
