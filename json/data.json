@@ -1,0 +1,196 @@
+[
+  {
+    "id": 1,
+    "artist": "Justin Timberlake",
+    "description": "Justin Timberlake is een Amerikaanse zanger, songwriter, acteur en producent. Hij werd beroemd als lid van de boyband NSYNC in de jaren ’90. Timberlake heeft meerdere succesvolle soloalbums uitgebracht, waaronder Justified en FutureSex/LoveSounds. Zijn muziek combineert pop, R&B en funk-invloeden. Hij heeft talloze awards gewonnen, waaronder Grammy Awards. Naast muziek acteerde hij in films zoals The Social Network en Friends with Benefits. Timberlake staat bekend om zijn energieke optredens en veelzijdige talenten. Hij is ook actief in mode en filantropie. ",
+    "image": "/assets/artists/justin.png",
+    "page": "./detailPage1.html",
+    "genres": ["Pop", "Contemporary R&B", "Jazz"],
+    "tracks": [
+      {
+        "title": "Sexy Back",
+        "album": "LoveSounds",
+        "releaseDate": "2006",
+        "genre": "Pop/R&B/Dance"
+      },
+      {
+        "title": "Cry Me a River",
+        "album": "Justified",
+        "releaseDate": "2002",
+        "genre": "Pop/R&B"
+      },
+      {
+        "title": "Can’t Stop the Feeling!",
+        "album": "Trolls Soundtrack",
+        "releaseDate": "2016",
+        "genre": "Pop/Funk"
+      },
+      {
+        "title": "Mirros",
+        "album": "The 20/20 Experience",
+        "releaseDate": "2013",
+        "genre": "Pop/R&B"
+      },
+      {
+        "title": "Midnight Whispers",
+        "album": "Blue Shadows",
+        "releaseDate": "2024",
+        "genre": "Jazz"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "artist": "Adele",
+    "description": "Adele Laurie Blue Adkins is een Britse zangeres en songwriter die bekendstaat om haar krachtige stem en emotionele ballads. Ze brak door met haar album 19 en behaalde wereldwijd succes met albums als 21, 25 en 30. Haar muziek combineert soul, pop en jazz-invloeden. Adele heeft vele Grammy Awards gewonnen en een Academy Award voor 'Skyfall'.",
+    "image": "/assets/artists/adele.png",
+    "page": "./detailPage2.html",
+    "genres": ["Pop", "Soul"],
+    "tracks": [
+      {
+        "title": "Rolling in the Deep",
+        "album": "21",
+        "releaseDate": "2010",
+        "genre": "Pop/Soul"
+      },
+      {
+        "title": "Hello",
+        "album": "25",
+        "releaseDate": "2015",
+        "genre": "Pop/Soul"
+      },
+      {
+        "title": "Someone Like You",
+        "album": "21",
+        "releaseDate": "2011",
+        "genre": "Pop/Soul"
+      },
+      {
+        "title": "Set Fire to the Rain",
+        "album": "21",
+        "releaseDate": "2011",
+        "genre": "Pop/Soul"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "artist": "Ed Sheeran",
+    "description": "Edward Christopher Sheeran is een Engelse singer-songwriter die wereldwijde faam verwierf met zijn hit 'The A Team'. Zijn muziek combineert pop, folk en R&B-invloeden. Sheeran staat bekend om zijn akoestische gitaarspel en intieme teksten. Hij heeft meerdere albums uitgebracht zoals '+', 'x', '÷' en 'Subtract'.",
+    "image": "/assets/artists/ed.png",
+    "page": "./detailPage3.html",
+    "genres": ["Pop", "Folk", "R&B"],
+    "tracks": [
+      {
+        "title": "Shape of You",
+        "album": "Divide",
+        "releaseDate": "2017",
+        "genre": "Pop/R&B"
+      },
+      {
+        "title": "Perfect",
+        "album": "Divide",
+        "releaseDate": "2017",
+        "genre": "Pop/Folk"
+      },
+      {
+        "title": "Thinking Out Loud",
+        "album": "x",
+        "releaseDate": "2014",
+        "genre": "Pop/Soul"
+      },
+      {
+        "title": "Photograph",
+        "album": "x",
+        "releaseDate": "2014",
+        "genre": "Pop/Folk"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "artist": "Beyoncé",
+    "description": "Beyoncé Giselle Knowles-Carter is een Amerikaanse zangeres, songwriter, actrice en producer. Ze begon haar carrière als lid van Destiny’s Child en werd een van de meest invloedrijke artiesten ter wereld. Haar muziek bevat R&B, pop en hiphop-invloeden. Beyoncé heeft talloze Grammy Awards gewonnen en staat bekend om haar indrukwekkende liveoptredens.",
+    "image": "/assets/artists/beyonce.png",
+    "page": "./detailPage4.html",
+    "genres": ["R&B", "Pop", "Hip-Hop"],
+    "tracks": [
+      {
+        "title": "Halo",
+        "album": "I Am... Sasha Fierce",
+        "releaseDate": "2008",
+        "genre": "Pop/R&B"
+      },
+      {
+        "title": "Single Ladies",
+        "album": "I Am... Sasha Fierce",
+        "releaseDate": "2008",
+        "genre": "Pop/R&B"
+      },
+      {
+        "title": "Crazy in Love",
+        "album": "Dangerously in Love",
+        "releaseDate": "2003",
+        "genre": "R&B/Pop"
+      },
+      {
+        "title": "7/11",
+        "album": "Beyoncé",
+        "releaseDate": "2014",
+        "genre": "Hip-Hop"
+      },
+      {
+        "title": "Sorry",
+        "album": "Lemonade",
+        "releaseDate": "2016",
+        "genre": "Hip-Hop/R&B"
+      },
+      {
+        "title": "Formation",
+        "album": "Lemonade",
+        "releaseDate": "2016",
+        "genre": "R&B/Pop"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "artist": "Billie Eilish",
+    "description": "Billie Eilish Pirate Baird O'Connell is een Amerikaanse zangeres en songwriter bekend om haar donkere, sfeervolle muziek en fluisterachtige zangstijl. Ze brak door met 'Ocean Eyes' en won meerdere Grammy Awards, waaronder Album of the Year en Best New Artist.",
+    "image": "/assets/artists/billie.png",
+    "page": "./detailPage5.html",
+    "genres": ["Pop", "Electropop", "Alternative", "Jazz"],
+    "tracks": [
+      {
+        "title": "Bad Guy",
+        "album": "When We All Fall Asleep, Where Do We Go?",
+        "releaseDate": "2019",
+        "genre": "Pop/Electropop"
+      },
+      {
+        "title": "Ocean Eyes",
+        "album": "Don't Smile at Me",
+        "releaseDate": "2016",
+        "genre": "Pop/Alternative"
+      },
+      {
+        "title": "Everything I Wanted",
+        "album": "-",
+        "releaseDate": "2019",
+        "genre": "Pop/Alternative"
+      },
+      {
+        "title": "Therefore I Am",
+        "album": "Happier Than Ever",
+        "releaseDate": "2020",
+        "genre": "Pop/Alternative"
+      },
+      {
+        "title": "Midnight Whispers",
+        "album": "Blue Shadows",
+        "releaseDate": "2024",
+        "genre": "Jazz"
+      }
+    ]
+  }
+]
