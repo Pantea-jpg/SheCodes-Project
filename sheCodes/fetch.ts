@@ -9,7 +9,7 @@ const MB_HEADERS = {
   "User-Agent": "MyMusicApp/1.0 (your@email.com)", 
 };
 
-// Rate limiter برای MusicBrainz (max 1 req/s)
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 let _lastMbRequest = 0;
 async function mbFetch(url) {
